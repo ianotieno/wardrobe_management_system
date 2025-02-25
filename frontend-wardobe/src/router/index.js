@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Register from '../views/Register.vue';
 import Login from '../views/Login.vue';
 import Dashboard from '../views/Dashboard.vue';
+import DefaultLayout from '../components/DefaultLayout.vue';
 
 const routes = [
   {
@@ -17,8 +18,18 @@ const routes = [
   },
   {
     path: '/',
-    name: 'Dashboard',
-    component: Dashboard,
+    redirect: '/dashboard',
+  },
+  {
+    path: '/dashboard',
+    component: DefaultLayout,
+    children: [
+      {
+        path: '',
+        name: 'Dashboard',
+        component: Dashboard,
+      },
+    ],
   },
 ];
 
